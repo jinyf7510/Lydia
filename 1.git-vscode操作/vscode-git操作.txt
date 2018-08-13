@@ -1,0 +1,15 @@
+1.从github下载
+a.查看github上相关文件夹==》例如：点clone or download，复制 https://github.com/jinyf7510/Lydia.git
+
+b. 在vscode中：ctrl + shift + p: 输入git地址==》指定本地项目文件夹
+
+2.插件 git easy
+
+3.命令行：
+git config --global user.name 'jinyf7510'
+git config --global user.email 'jinyt7510@163.com'
+
+4.本地上传github
+a. commit: 点开“源代码管理器”==》点 "..."处==》选“全部提交” ==》输入说明信息。
+b. push: 点开“源代码管理器”==》点 "..."处==》选"推送" ==》输入用户名和密码
+c. 验证：刷新并查看github相关文件夹，是否上传成功。
