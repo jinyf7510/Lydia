@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ 浅拷贝和深拷贝的实现方法, 区别?
+ <script>
+ //1.深copy  prototype:原型
+var obj1 = {
+    name: "撒哈拉大沙漠",
+    addr: "非洲北部",
+    dad : {
+        name: "地球",
+        addr: "太阳系"
+    }
+}
+//console.log(obj1.dad.name;);
+//深copy
+var obj2 = new Object();
+//var obj3 = new Object();
+
+obj2.name = obj1.name;
+obj2.addr = obj1.addr;
+obj2.dad = obj1.dad;
+obj2.dad.name = '芒果';
+
+obj1.name = "哈密瓜";
+console.log(obj2);
+
+/*
+深浅拷贝的区别：
+
+    深拷贝是在引用方面不同，深拷贝就是创建一个新的和原始字段的内容相同的字段，是两个一样大的数据段，所以两者的引用是不同的，之后的新对象中的引用型字段发生改变，不会引起原始对象中的字段发生改变。
+
+浅拷贝是只对指针进行拷贝，两个指针指向同一个内存块(原理:快捷方式, 浅拷贝就是创建快捷方式,二个快捷方式指向同一个堆内存)
+
+深拷贝是对指针和指针指向的内容都进行拷贝，拷贝后的指针是指向不同内存位置的指针。(china高仿)
+
+*/
+ </script>
+
+
+
+
+</body>
+</html>

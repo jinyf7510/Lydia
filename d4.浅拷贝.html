@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ 浅拷贝和深拷贝的实现方法, 区别?
+ <script>
+ //1.浅copy  prototype:原型
+var obj1 = {
+    name: "撒哈拉大沙漠",
+    addr: "非洲北部",
+    dad : {
+        name: "地球",
+        addr: "太阳系"
+    }
+}
+
+//1.浅copy
+var obj2 = obj1; //对象,数组之间只有引用赋值
+//var obj3 = obj1;
+
+obj1.name = "毛里塔尼亚";
+obj1.addr = "非洲大陆";
+
+obj1.name = "无中生有";
+console.log(obj2); 
+
+ </script>
+
+
+
+
+</body>
+</html>

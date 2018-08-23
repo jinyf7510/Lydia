@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{width: 80px;height: 30px;border: 1px solid #ccc;list-style: none;text-align: center;line-height: 30px;
+            float: left;}
+        .on{font-weight: bold; color: #f00; border-bottom:3px solid #00f;}
+    </style>
+
+</head>
+<body>
+    <ul>
+        <li class="on">东邪</li>
+        <li>西毒</li>
+        <li>南帝</li>
+        <li>北丐</li>
+        <li>中神通</li>
+    </ul>
+<script>
+var oLi = document.getElementsByTagName("li");
+var i=0;
+
+for(var i=0; i<oLi.length; i++){
+    oLi[i].index = i;
+    oLi[i].onmouseover = function(){
+       oLi[this.index].className = "on";
+       oLi[0].className = "";
+    }
+
+    oLi[i].onmouseout = function(){
+        oLi[this.index].className = '';
+    }
+}
+/*
+与hover原理等同 
+onmouseover: 鼠标经过事件
+onmouseout: 鼠标离开事件
+*/
+</script>
+</body>
+</html>

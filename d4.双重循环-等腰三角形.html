@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//原理: 分针和秒针的关系,分针动一格,秒针跑60格(一圈) 
+/* for(var j=1; j<=10; j++){//分针 外层循环: 加1
+    for(var i=1; i<=j; i++){//秒针 内层循环: 完整地执行一轮循环
+        document.write(i+'&nbsp;');
+    }
+    document.write('<br />');
+} */
+
+//打印&nbsp的行数 = 总行数-1;
+num = 10;
+for(var j=1; j<=num; j++){
+    for(var n=1; n<=num-j; n++){//space 递减
+        document.write('*');
+    } 
+
+    for(var i=1; i<=j; i++){//递增
+        document.write(i+'&nbsp;');
+    }
+    document.write('<br />');
+}
+
+
+ /* 
+document.write('&nbsp;');//1 space
+for(var i=1; i<=9; i++){//9
+    document.write(i+'&nbsp;');
+}
+document.write('<br />');
+ */
+
+
+</script>  
+</body>
+</html>
