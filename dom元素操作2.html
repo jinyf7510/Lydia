@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//dom元素的操作: 增,删,改,查
+//1.创建元素
+var oUl = document.createElement("ul");
+for(var i=0; i<8; i++){
+  // createLi();
+    newLi(i+". 你叫什么名字?");
+}
+document.body.appendChild(oUl);
+
+function createLi(){//创建一个无参函数
+    var oLi = document.createElement("li");
+    oLi.innerHTML = "要想睡得好,必须吃得饱!";
+    oUl.appendChild(oLi);
+}
+
+function newLi(str){//创建一有参函数
+    var oLi = document.createElement("li");
+    oLi.innerHTML = str;
+    oUl.appendChild(oLi);
+}
+
+//2.删除元素
+var oLi = document.getElementsByTagName("li");
+//oUl.removeChild(oLi[7]); //删除一个元素
+//oUl.removeChild(oLi[oLi.length-1]); //删除一个元素
+
+for(var i=0; i<oLi.length; i++){//点击删除
+    oLi[i].onclick = function(){
+        console.log(this);
+        oUl.removeChild(this);
+    }
+} 
+
+</script>   
+</body>
+</html>
