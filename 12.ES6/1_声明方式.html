@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+
+    <script>
+    //一.JS中变量的声明
+        //1.JS中的var声明:
+        //var :variable
+        /* var a = 5;
+        console.log(a); 
+
+        a = 5;//var可写,可不写, 但不写无法判断是全局还是局部,会发生莫名其妙的错误
+        console.log(a); */
+
+        //1.1.JS中的var声明: 经典例1
+        /* var a = 5;
+        function foo(){
+            console.log(a);//undefined
+            var a = 6; // 情况一: 此处加上var后,a成为局部变量(即foo()的局部变量), "局部变量处处都有定义(不看位置,只看其作用域范围)". 相当于下列代码.
+                      
+                      
+            // 相当于
+            var a;
+            console.log(a);
+            a = 6;
+        }
+        foo(); */
+
+        //1.1.2.JS中的var声明: 经典例2
+        /* var a = 5;
+        function foo(){
+            console.log(a);//5 
+            a = 6;  // 情况二: 去除var, a将成为全局变量定义的var a=5, console.log()输出为5
+        }
+        foo(); */
+
+        //3.function的优先级 > var变量声明
+       /* console.log("1==" + a);//a为function, 
+        var a = 5;
+        function a(){
+            console.log("2==" + a);
+        }
+        a = 6;
+        console.log("3==" + a);//a为 var
+        a(); //a此时为 a=6 是var ,而不是 function 
+        */
+
+
+        //3.1.function定义方式不同,调用位置就不同
+        //a. 使用function定义的函数, 在其上方|下方调用都可以
+     /*    fn1();
+        function fn1(){
+            console.log('fn1');
+        }
+
+        //b. 使用var定义的函数,必须在其下方调用
+        //fn2();
+        var fn2 = function(){
+            console.log('fn2');
+        }; 
+        fn2();*/
+
+        //4.1 js没有块级作用域的危害一: 局部变量可在全局调用
+        /* if(true){
+            var a = 5;
+        }
+        console.log(a); */
+
+        //4.2 js没有块级作用域的危害二: 污染全局变量
+        /* var a = 5;
+        function foo(){
+            console.log(a);
+            //逻辑代码
+            if(false){//为false时,虽不会执行,但会影响全局变量a=5
+                var a = 6;
+            }
+        }
+        foo(); */
+
+        //4.3 js没有块级作用域的危害一: 局部变量可在全局调用
+        /* for(var i=0; i<3; i++){
+            console.log(i);
+        }
+        console.log(i);//3 此时的值为终止循环条件时的值
+        */
+
+//二. ES6的变量声明
+    //let
+        //1.不存在在变量提升: 先使用,再定义,即变量可以在声明之前使用，值为undefined。
+        /*  console.log(a);
+         let a = 5; */
+
+        //2.不允许重复声明: let不允许在相同作用域内，重复声明同一个变量。在大的项目中,多人合作/后期维护时难免会产生重复声明变量的bug
+        /* let a = 5;
+        let a = 6;
+        console.log(a); */
+
+//抛出异常, 不是es6代码
+      /*   var a = 5;
+        if(a == 5){
+            throw new Error('a已经等于5啦！别再赋值啦!');
+        } */
+
+        //3.暂时性死区
+        //只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。
+       /* var a = 5;
+        function foo(){
+            console.log(a);
+            let a = 6;
+        }
+        foo(); */
+        /*
+        上面代码中，存在全局变量tmp，但是块级作用域内let又声明了一个局部变量tmp，导致后者绑定这个块级作用域，所以在let声明变量前，对tmp赋值会报错。
+
+ES6 明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。
+
+总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称 TDZ）。
+        */
+
+        //4.块级作用域
+        /* let a = 5;//a为全局
+        function foo(){
+            console.log(a);
+            //逻辑代码
+            if(false){//此时的a仅作用于if区域
+                let a = 6;
+            }
+        }
+        foo(); */
+
+        /* for(let i=0; i<3; i++){
+            console.log(i);
+        }
+       // let i = 5; //es6中如果不定义, 无法取到值
+        console.log(i); */
+
+       /*  function foo(arg){
+            console.log(arg);
+           // {
+                let arg = 6; //与形参冲突,必须指定区域{}
+                console.log(arg);
+           // }
+        }
+        foo(5); 
+*/
+
+    //const: 声明一个只读的常量. 一旦声明,常量的值就不能改变(值类型).
+    //1.常量的值只读,不能改变.
+        /* const a = 5;
+        a = 6;
+        console.log(a); */
+
+    //2.引用性常量需要注意的:
+    //obj
+        /*  const obj = {
+             name: 'wangsan',
+             age: 18
+         };
+         console.log(obj);
+         obj = {//**不能改变**
+             name: 'lisi'
+         };//此时相当于new Object(), 创建了一个新对象,即内存中开辟出一个新地址, 因为内存地址已发生改变,obj.name的值将不允许改变, 另外ES6变量不允许重复声明
+         
+
+         //Object.freeze(obj);//冻结将无法改变
+         obj.age=24; //**可以改变值**, 因为内存地址不变
+         console.log(obj); */
+         /*
+            const实际上保证的,并不是变量的值不得改动,而是变量指向的那个内存地址不得改动.(引用类型)
+         */
+
+    //array
+        /* const arr = [1, 2, 3, 4];//相当于new Array();
+        console.log(arr);
+        arr.push(5); //可以改变,向同一个地址增加数据
+        console.log(arr); */
+
+
+
+         /*let arr = [];
+        //for(let i=0; i<5; i++){//let实现内部区分
+        for(var i=0; i<5; i++){//var则成为闭包,取i=5的值
+            //  aLi[i].index = i;
+            // aLi[i].onclick = function(){
+            //     console.log(this.index);
+            // }; 
+            arr[i] = function(){
+                console.log(i);
+            };
+        }
+        arr[3](); 
+*/
+        var oUl = document.querySelector("#ul1");
+        var aLi = oUl.getElementsByTagName('li');
+        //方法一  对象自定义属性
+        /* for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onclick = function () {
+                console.log(this.index);
+            };
+        } */
+
+        //方法二  let
+        /* for (let i = 0; i < aLi.length; i++) {
+        // for (var i = 0; i < aLi.length; i++) {//var另一种结果
+            aLi[i].onclick = function () {
+                console.log(i);
+            };
+        } */
+
+        //方法三  闭包
+        //外部函数里面定义内部函数，内部函数应用外部函数的局部变量,变量不被释放
+     /*   for (var i = 0; i < aLi.length; i++) {
+            (function (idx) {
+                aLi[idx].onclick = function () {
+                    console.log(idx);
+                };
+                /* aLi[0].onclick = function () {
+                    console.log(0);
+                };
+                aLi[1].onclick = function () {
+                    console.log(1);
+                };
+                aLi[2].onclick = function () {
+                    console.log(2);
+                }; */
+      /*      })(i);//函数立即调用
+        }
+    */
+    /*
+        闭包的弊端: 闭包被调用时, 其参数i-实参, idx-形参 一直被调用,在内存中不被释放,且当多次调用闭包时,也会导致内存越来越大,且始终不被释放. 一直被占用.
+    */
+    </script>
+</body>
+
+</html>

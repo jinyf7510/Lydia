@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let str = new String('abc);
+        /* let arg = 'hello';
+        let str = 'asdfasfa'
+            + 'sfsafasdf' + arg + 'sad<h1>fsa</h1>df'
+            + 'asfasfa';
+        document.write(str); */
+
+    //es6反引号支持:${arg} 换行 html标签 数学运算
+        /* let a = 5, b = 6;
+        let str1 = `asdfa
+        sdfasfasdfasdfa
+        sdfsadfs ${arg} af<h1>5+6=${a+b}</h1>
+        daf`;
+        document.write(str1); */
+
+    //1.indexOf vs includes()
+        let str = '啊hello world';
+         console.log(str.indexOf('啊hello')); //返回下标位置
+        /*console.log(str.includes('x')); //返回布尔值,es6中新函数*/
+
+    //2.startsWith() endsWith(): 支持中文
+        // console.log(str.startsWith('哦'));//以什么字符/单词开头
+        // console.log(str.endsWith('world1'));
+
+        // //startswith
+        // function sw(str, target){
+        //     if(str.indexOf(target) == 0){
+        //         return true;
+        //     }
+        //     return false;
+        // }
+        // console.log(sw(str, '啊hello1'));
+
+        // //endswith
+        // function ew(str, target){//lastIndexOf() 方法可返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。
+        //     if(str.lastIndexOf(target) == str.length - target.length){//12-5
+        //         return true;
+        //     }
+        //     return false;
+        // }
+        // console.log(ew(str, 'world'));
+
+//3.padStart 
+        let str2 = 'xy';
+        console.log(str2.padStart(8, 'abc')); //在str2前方添加abc,但str2总长度=8,超出部分清除
+        console.log(str2.padEnd(8, 'abc'));
+        console.log(str2.repeat(5));
+        
+
+
+
+    </script>
+</body>
+
+</html>

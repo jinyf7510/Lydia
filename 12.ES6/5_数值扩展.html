@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+//一.JS进制转换方法
+        let num1 = 5;//101
+        console.log(num1.toString(2));//十进制 =》 二进制
+
+        let num2 = 101;
+        console.log(parseInt(num2, 2));//二进制 =》 十进制
+
+//二.Es6进制转换方法
+        let num3 = 0B0101;// 二进制表示: 0b 或 0B 开头
+        console.log(num3);
+
+        let num4 = 0O666;
+        console.log(num4);// 八进制表示: 0o 或 0O 开头 */
+
+//三.ES6 常用数值函数
+        //Number.isFinite(5)  判断是否为数字 返回布尔型
+        /* console.log(Number.isFinite(5));
+        console.log(Number.isFinite('5'));
+        console.log(Number.isFinite(undefined));
+        console.log(Number.isFinite(null));
+        console.log(Number.isFinite(5 / 0));
+        console.log(Number.isFinite(NaN)); */
+
+        /*
+ 一. JS下可恶的NaN:   
+ 只要JS无法计算的东西,其结果都是NaN,如下:    
+1 + undefined; //NaN
+1 - 's'; //NaN
+
+//所以导致NaN的情况很多, 因些 = 两端虽说都是NaN,但却是不同原因,导致的一个结果,如上:
+NaN === NaN //false
+NaN == NaN //false
+
+//注意:
+isNaN(8); //false 是数字
+isNaN('a'); //true时, 不是数字
+        */
+
+/*
+window.isNaN(): 是全局下的方法,传统JS使用
+Number.isNaN(): 是ES6下的方法,是局部使用,属于Number的方法
+这些传统JS中的方法移植到Number对象上面,行为完全保持不变,这样做的目的,是逐步减少全局性(window)方法,使得语言逐步模块化.
+
+*/
+        /* console.log(window.isNaN(NaN));
+        console.log(Number.isNaN(NaN)); */
+
+        /* console.log(Number.isInteger(5));
+        console.log(Number.isInteger(5.5));
+
+        console.log(Number.parseInt(5.5));
+        console.log(Number.parseFloat(5.5)); */
+
+        /* let max = Math.pow(2, 53);//整数最大值
+        console.log(max);
+        console.log(max - 1);
+        console.log(Number.MAX_SAFE_INTEGER);//整数最大值
+        console.log(Number.MIN_SAFE_INTEGER);//整数最小值
+        console.log(Number.isSafeInteger(4));//在整数的区间内,为安全的整数,返回true, 否则,出范围,返回false;
+        console.log(Number.isSafeInteger(max));
+        
+         */
+
+        // console.log(Math.trunc(5.5));//去除小数部分,返回整数部分
+        //Math.sign: 判断一个数字是正数,负数,还是0
+        console.log(Math.sign(5));//正数返回1
+        console.log(Math.sign(-5));//负数返回-1
+        console.log(Math.sign(0));//0返回0
+
+        
+
+
+        
+
+
+
+    </script>
+</body>
+
+</html>

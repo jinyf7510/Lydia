@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">div1</div>
+
+    <script>
+        //1.参数默认值
+        /* function add(x, y='abc') {
+            // y = y || 0;
+            return `${x} + ${y}`;
+        }
+        console.log(add('hello', ''));
+ */
+        //2.解构赋值-数组
+        /* function foo([a, b, c, d, e]) {
+            console.log(a, b, c, d, e);
+        }
+        foo([1, 2, 3, 4, 5]); */
+
+        //3.解构赋值-对象
+       /*  function foo({name, age}){
+            console.log(name, age);
+        }
+        let obj = {
+            name: 'zhangsan',
+            age: 18
+        };
+        foo(obj); */
+
+        //4. length返回没有指定默认值的参数的个数
+        /* function add (x=0, y=0) {
+            return x + y;
+        }
+        add(5, 6);
+        console.log(add.length);//返回的是函数没有指定默认值的参数的个数
+        console.log(add.name); //返回方法名 */
+
+        //5. arg剩余的部分
+        /* function foo(a, b, ...arg) {
+            console.log(arg);
+        }
+        foo(1, 2, 3, 45, 6, 8, 9); */
+
+/*
+ES5的严格模式 use strict
+1.全局变量必须显式声明
+2.禁止this关键字指向全局对象,构造函数必须new
+3.函数不能有重名的参数
+4.禁止使用with语句
+5.arguments.callee()
+
+*/
+//下面的例子,启用和不启用进行对比
+        //'use strict' //启用严格模式
+        /*
+        //例1: 全局变量显示声明
+        a = 5;
+        console.log(a); */
+
+        //例2: 禁止this关键字指向全局对象
+        /* function foo () {
+           console.log(this);
+        }
+        foo(); */
+        
+        //例3: 构造函数必须new
+        /* function People (name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        let p1 = new People('lisi', 18); */
+
+        //例4: 函数不能有重名的参数
+        /* function foo(a, a, c) {
+            console.log(a, a, c);
+        }
+        foo(4, 5, 6); */
+
+        //例5: 禁止使用with语句, with:用于改变作用域的,极少用到
+        /* let a = 5;
+        let obj = {
+            a: 6
+        };
+        with(obj){
+            console.log(a);
+        } */
+
+        //例6: ES6禁用arguments.callee()
+        /* function foo (num) {
+            'use strict';//放在那个作用域,便在那个作用域采用严格模式
+            if(num == 1){
+                return 1;
+            }
+            //return num * foo(num-1);
+            return num * arguments.callee(num - 1);
+        }
+        console.log(foo(5)); */
+
+/*
+ES6-严格模式:
+1.函数内部,使用use strict.(放在那个(全局/局部的)作用域,便在那个(全局/局部的)作用域采用严格模式)
+2.ES6: 规定只要函数参数使用了默认值,解构赋值,或者扩展运算符,那么函数内部就不能显式设定为严格模式,否则会报错.
+
+严格模式好处:
+a.消除Javascript语法的一些不合理,不严谨之处,减少一些怪异行为;
+b.削除代码运行的一些不安全之处,保证代码运行的安全;
+c.提高编译器效率,增加运行速度;
+d.为未来新版本的javascript做好铺垫.
+*/
+
+        /* 
+    //例1: 函数内部使用 use strict, 函数参数不能使用 默认值  
+    // function add (x=0, y=10) {
+        function add (x, y) {
+            'use strict';
+            return x + y;
+        }
+        console.log(add(5, 6)); */
+        
+    //例2: 函数内部使用 use strict, 函数参数不能使用 解构赋值  
+    /* function foo([a, b, c, d, e]) {
+        'use strict';
+        console.log(a, b, c, d, e);
+    }
+    foo([1, 2, 3, 4, 5]); */
+    
+    //例: 函数内部使用 use strict, 函数参数不能使用 扩展运算符  
+    /* function foo(...arg) {
+            'use strict';
+            console.log(arg);
+        }
+        foo(1, 2, 3, 45, 6, 8, 9); */
+
+/******************************************************/
+    //箭头函数 => 左边():参数,  右边{}:函数体
+    //例1: 一条语句可以省略{}
+        /* function add(x, y) {
+            return x + y;
+        }
+        console.log(add(5, 6));
+
+
+        //let add2 = (x, y) => x + y;
+        let add2 = (x, y) => { return x + y };
+        console.log(add2(5, 6));
+        */
+       
+    //例2: 一个参数,一条语句, 可以省略()和{}
+       /*  function x(x){
+            return x;
+        }
+
+       // let x = x => x;
+        console.log(x(5));  */
+
+    //例3: 使用默认参数
+        /* let add = (x=0, y=0) => x + y;
+        console.log(add(5,6)); */
+
+    //例4: 扩展运算符
+        /* let foo = (...arg) => console.log(arg);
+        foo(1, 2, 3, 45, 6, 8, 9); */
+
+    //例5: 对象解构
+        /* let obj = {
+            name: 'lisi',
+            age: 18
+        };
+
+        let foo = ({name, age}) => console.log(name, age);
+    */
+    
+//箭头函数 与 正常函数的区别 ??? (常见面试题)
+    //1.箭头函数 不能使用arguments,该对象在函数体内不存在,如果要用,可以使用rest参数代替
+      /*   let obj = {
+            name: 'lisi',
+            age: 18
+        };
+
+        let foo = ({name, age}) => {
+            console.log(name, age);
+            //console.log(arguments);// 不能使用arguments
+        };
+        foo(obj);  */
+
+    //2.箭头函数 不能用于构造函数,即不可以使用new命令,否则会出错; 因为ES6有class类的创建方法.不再用function创建类
+        /* let People = (name, age) => { */
+        /*     this.name = name; */
+        /*     this.age = age; */
+        /* }; */
+        /* let p1 = new People('lisi', 18);//不能用于构造函数 */
+
+    //3.箭头函数 函数体内的this对象,就是定义时所在的对象,而不是使用时所在的对象
+    //例1: 
+       // let oDiv1 = document.querySelector("#div1");//定义时所在的对象
+
+       /*  oDiv1.addEventListener('click', function(){
+            console.log(this);
+            window.setTimeout(function(){
+                console.log(this);//因window调用,所以指向window
+            }, 2000);
+        }); */
+    /* 
+       oDiv1.addEventListener('click', function(){
+            console.log(this);//显示定义时的对象this
+            window.setTimeout(() => {
+                console.log(this);//调用时的对象不变
+            }, 2000);
+        }); */
+
+    //例2: 对象内部,不适合使用箭头函数
+      /*   let a = 5;
+        var b = 60;
+        console.log(window.a);//let定义,并不是全局变量
+        console.log(window.b);
+
+        let obj = {//obj定义时对象在全局中，即window
+            a : 6,
+            foo: function(){//JS传统写法
+               // console.log(this.a);//6
+                //console.log(this);//this->obj
+            },
+            foo2: ()=>{//注意:　对象内部不适合使用箭头函数
+                console.log(this.a);//undefine
+                console.log(this.b);//60,var定义的全局变量
+                console.log(this);//this->window (obj定义在全局)
+            },
+            foo3(){//ES6 对象中function的推荐写法
+               // console.log(this.a);//6
+            }
+        };
+
+        // obj.foo();
+        obj.foo2();
+        // obj.foo3(); */
+        
+    </script>
+</body>
+
+</html>

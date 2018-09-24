@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>11</div>
+    <div>22</div>
+    <div>33</div>
+
+    <script>
+    // ...: 即是扩展运算符, 表示许多个.
+    //1.不确定参数
+        /* function foo(...arg) {
+            // console.log(arguments[0], arguments[1]);
+            console.log(arg);
+        }
+        foo(5, 6, 7, 8);
+
+//2.作为数组的一部分
+   //例1:
+        let arr1 = [1, 2];
+        let arr2 = [3, ...arr1, 4]
+        console.log(arr2); */
+
+//3.数组复制
+        // let arr1 = [1, 2, 3, 4];
+        // let arr2 = arr1; //2-1
+
+        //arr2 = [...arr1]: 创建一个空数组[](即新建一个堆),把arr1插入到arr2中.
+       // let arr2 = [...arr1]; //去除bug:使用..., arr1/arr2将成为二个独立的堆,彼此不再相同
+
+        // console.log(arr1);
+        //  arr1.push(5); //arr1/arr2相同是因为共用堆内存//2-2: bug
+        // console.log(arr2);
+
+//4.合并数组
+        /* let arr1 = [1, 2];
+        let arr2 = [3, 4]
+        // let arr3 = arr1.concat(arr2);
+        let arr4 = [...arr1, ...arr2];//合并数组
+        console.log(arr4); */
+
+//5.合并对象
+    //例1:
+        function foo(...arg){
+            console.log(arg);
+        }
+         let obj1 = {
+            name: 'zhangsan',
+            age: 18
+        };
+        let obj2 = {
+            name: 'lisi',
+            age: 20
+        };
+       // foo(obj1, obj2); 
+        
+
+        //let obj3 = {...obj1, ...obj2}; //合并bug: obj2 会覆盖 obj1, 类似JQ中的$.extend();
+        // console.log(obj3);
+        console.log(Object.assign(obj1, obj2));//解决bug.
+
+ //6.解构:
+        /* let aDiv = document.querySelectorAll("div");
+        console.log(aDiv.constructor);//类数组,不是数组  nodelist
+
+       /* let arr = [...aDiv]; //将aDiv转换为数组
+        arr.push(123);
+        console.log(arr);
+        */
+
+        let [div1, div2, div3] = [...aDiv]; //解构为对象
+        // for(let i=0; i<aDiv.length; i++){
+        //     arr.push(aDiv[i]);
+        // }
+        // arr.push(123);
+        console.log(div1, div2, div3); */
+        // let arr = [1, 2, 3];
+        // console.log(arr.constructor);
+
+
+        /* let obj1 = {
+            name: 'zhangsan',
+            age: 18
+        };
+
+        let {name, age} = obj1;//解构
+        console.log(name, age); */
+
+ //7. rest(剩余)运算符，必须放在最后一个
+        /* function foo(a, b, ...arg) {
+            console.log(a); //a,b为固定的
+            console.log(b);
+            console.log(arg); //...arg为a,b之外的,即剩余的(别人拣剩下的)
+        }
+        foo(5, 6, 7, 8, 9, 10); */
+    </script>
+</body>
+
+</html>

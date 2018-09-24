@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+//注意: 解构赋值是一一对应的, 不会改变数据类型, = 等号二端必须是同种数据类型    
+
+//1.数组解构: 通过下标顺序进行对应解构
+        /* let arr = [1, 2, 3];
+        let a = arr[0];
+        let b = arr[1];
+        let c = arr[2];
+        console.log(a, b, c); */
+
+        /* let [a, b, c] = [1, 2, 3];
+        console.log(b, a, c); */
+
+       
+        /* let [a, b, [c], e] = [1, 2, [3, 4], 5];
+        console.log(a,b,c,e); */
+
+        /* let [a, b, c, e] = [1, 2, [3, 4], 5];
+        console.log(a,b,c,e); */
+
+        //设d=4 为默认值,即惰性赋值. 若右侧没有8, 则d=4;
+        /* let [a, b, [c, d=4], e] = [1, 2, [3, 8], 5];
+        console.log(a, b, c, d, e); */
+
+       /*  function foo(){
+            //console.log(123);
+            return 123;
+        }
+        let [a=foo()] = [];  
+        console.log("惰性a ="+a);
+      */
+
+//2.对象解构: 通过key值顺序进行解析
+        // let obj = {
+        //     name: 'zhangsan',
+        //     age: 18
+        // };
+        // /* let name = obj.name;
+        // let age = obj.age; */
+        // // let {age, name} = obj;
+        // let {age:age1, name:name1} = obj;// :(key的)别名
+        // console.log(name1, age1);
+
+//3.字符串解构: 原理:将字符串当数组使用
+        /* let str = 'hel lo';//空格也算一个字符
+        let [a, b, c, d, e, f] = str;
+        console.log(a, b, c, d, e, f); */
+
+//4.函数参数解构:
+        /* function add([x=0, y=0]){
+            console.log(x + y);
+        }
+        //let arr = [5, 10]
+        let arr = [];
+        add(arr); */
+
+        /* function foo({name, age, school='XX大学'}){
+            console.log(name, age, school);
+        }
+
+        let obj = {
+            name: 'lisi',
+            age: 20,
+            school: '农大'
+        };
+        foo(obj); */
+
+//5.将函数返回值进行解构
+        /* function foo() {
+            let arr = ['aa', 'bb', 'cc'];
+            return arr;
+        }
+        let [a, b, c] = foo(); 
+        console.log(a, b, c); */
+
+        /* function foo() {
+            let obj = {
+                name: 'lisi',
+                age: 20,
+                school: '农大'
+            };
+            return obj;
+        }
+        let {name:a, age:b, school:c} = foo();//key的别名
+        console.log(a, b, c); */
+
+//6.变量互换:(面试经常考)
+        /* var a = 5;
+        var b = 6; */
+
+        //方法一:
+        /* let temp = a;
+        a = b;
+        b = temp; */
+
+        //方法二:
+        /* a = a + b;//a=11
+        b = a - b;//b=5
+        a = a - b;//a=6 */
+
+        //方法三:
+        // let arr = [a, b];
+        //console.log(arr[1], arr[0]);
+
+        //方法四:
+        // a = [b, b = a][0]; 
+        /*//原理:  
+        a = [b, b = a];
+        a[0] =>[6, 5][0];
+        a[1] =>[6, 5][1];*/
+
+        //方法五:
+        //var a = 5; var b = 6;
+        /* var[a,b] = [b,a];
+        console.log(a, b);//6 5 */
+
+//7.json应用
+        /*let json = '{"a": "Hello", "b": "World"}';//json字符串
+        let obj = JSON.parse(json);//JSON.parse() 方法用于将一个 JSON 字符串转换为对象。
+        let { a, b } = obj;
+        console.log(a, b); */
+
+        let {z} = {z:10};
+        console.log(z);
+
+//有初始值时或已定义时,进行解析必须加(),否则报错,例如下:
+        let c; 
+        ({c} = {c:1});
+        console.log(c);
+    </script>
+</body>
+
+</html>
